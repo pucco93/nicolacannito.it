@@ -27,7 +27,7 @@ class Header extends Component {
             value: 0,
         };
     }
-    
+
     handleChange = (event, value) => {
         this.setState({ value });
     };
@@ -36,16 +36,16 @@ class Header extends Component {
     render() {
         const { classes } = this.props;
 
-        return(
-            <div>
+        return (
+            <div className="mainNav">
                 <Paper>
                     <AppBar position="static">
-                        <Tabs 
-                            value={this.state.value} 
-                            onChange={ this.handleChange } 
-                            centered 
-                            indicatorColor={`${orange}`} 
-                            inkBarStyle={{ backgroundColor: '#e65100' }} 
+                        <Tabs
+                            value={this.state.value}
+                            onChange={this.handleChange}
+                            centered
+                            indicatorColor={`${orange}`}
+                            inkBarStyle={{ backgroundColor: '#e65100' }}
                             inkBarContainerStyle={{ background: '#e65100' }}
                         >
                             <Tab classes={{ label: classes.label }} label="Home" />
@@ -56,8 +56,9 @@ class Header extends Component {
                     <img src={logo} alt="Logo" className="logo"></img>
                 </Paper>
             </div>
+
         );
     }
 }
 
-export default withStyles(styles) (Header);
+export default withStyles(styles)(Header);
