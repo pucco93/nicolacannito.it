@@ -1,35 +1,9 @@
-$primary-blue: #336fa3;
-
-html {
-  font-family: 'Roboto';
-}
-
-.container {
-  text-align: left;
-}
-
-/***************************** HeaderSection *****************************/
-
-.mainNav {
-  display: none;
-  position: relative;
-  background: $primary-blue;
-}
-
-.logo {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 40px;
-  height: auto;
-}
-
-/**************************** HomeSection ****************************/
+@import '../theming/Colors.module.scss';
 
 .backgroundImgHome {
   width: 100%;
-  height: 100vh;
-  background: url('./images/img1.jpeg');
+  height: 100%;
+  background: url('../images/img1.jpeg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -57,11 +31,9 @@ html {
 
 .buttons {
   margin-top: 40px;
-  margin-left: 42.5%;
-  width: 15%;
   text-align: center;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   text-transform: uppercase;
   color: white;
   font-size: 25px;
@@ -71,6 +43,7 @@ html {
 .workButton {
   border: 1px solid white;
   padding: 10px 20px;
+  margin-right: 10px;
   position: relative;
   cursor: pointer;
 }
@@ -95,6 +68,7 @@ html {
 .blogButton {
   border: 1px solid white;
   padding: 10px 20px;
+  margin-left: 10px;
   position: relative;
   cursor: pointer;
 }
@@ -146,28 +120,4 @@ html {
   color: white;
   font-size: 22px;
   padding-top: 9px;
-}
-
-/****** React Transition Group ******/
-
-.appear {
-  opacity: 0.01;
-  transform: translate(-100px, 0);
-  transition: all 300ms;
-}
-
-.appearActive {
-  opacity: 1;
-  transform: translate(0, 0);
-}
-
-.enter {
-  opacity: 0.01;
-  transform: translate(-100px, 0);
-  transition: all 300ms;
-}
-
-.enterActive {
-  opacity: 1;
-  transform: translate(0, 0);
 }

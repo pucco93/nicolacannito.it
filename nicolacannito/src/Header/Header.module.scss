@@ -1,0 +1,40 @@
+@import '../theming/Colors.module.scss';
+
+.mainNav {
+  display: none;
+  position: relative;
+  background: $primary-blue;
+}
+
+.logo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 40px;
+  height: auto;
+}
+
+
+/****** React Transition Group ******/
+
+.appear {
+  opacity: 0.01;
+  transform: translate(-100px, 0);
+  transition: all 300ms;
+}
+
+.appearActive {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.enter {
+  opacity: 0.01;
+  transform: translate(-100px, 0);
+  transition: all 300ms;
+}
+
+.enterActive {
+  opacity: 1;
+  transform: translate(0, 0);
+}
