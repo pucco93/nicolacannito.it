@@ -1,52 +1,56 @@
 import React, { useState } from 'react';
 import styles from './HomeSection.module.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookF,
-    faYoutube,
-    faTwitter,
-    faInstagram,
-    faVimeoV
-} from '@fortawesome/free-brands-svg-icons';
-import { CSSTransition } from 'react-transition-group';
+import { useTrail, animated, interpolate } from 'react-spring';
+import { Icons } from './Icons';
+import { HomeButtons } from './HomeButtons';
+
 
 export interface IHomeSectionProps {
     titleTransition: boolean;
+    changePage: (workValue: string) => void;
 }
 
 export const HomeSection = (props: IHomeSectionProps) => {
 
+    const items = ['Nicola Cannito'];
+
+    const config = { duration: 600, mass: 1, tension: 200, friction: 100 };
+
+    const trail = useTrail(items.length, {
+        config,
+        opacity: props.titleTransition ? 1 : 0,
+        x: props.titleTransition ? 0 : 20,
+        height: props.titleTransition ? 120 : 0,
+        from: { opacity: 0, x: 20, height: 0 },
+    });
+    
+    const openWorks = () => {
+        props.changePage('Works');
+    }
+
+    const openBlog = () => {
+
+    }
+
     return(
         <div className={ styles.backgroundImgHome } >
-            <CSSTransition in={ props.titleTransition } timeout={ 200 } classNames={{
-                appear: styles['appear'],
-                appearActive: styles['appearActive'],
-                enter: styles['enter'],
-                enterActive: styles['enterActive'],
-            }}>
-                <div className={ styles.mainTitleName }>Nicola Cannito</div>
-            </CSSTransition>
-            <div className={ styles.adjectives }>&nbsp;Videomaker&nbsp;</div>
-            <div className={ styles.buttons }>
-                <div className={ styles.workButton }>work</div>
-                <div className={ styles.blogButton }>blog</div>
+            <div className={ styles.paddingTop } >
+                { trail.map(({ x, height, opacity }, index) => (
+                    <animated.div key={items[index]}
+                    className={ styles.mainTitleName }
+                    style={{
+                        opacity: 1,
+                        transform: interpolate([],
+                        x => `translate3d(0,${x}px,0)`
+                        )
+                    }}>
+                        <animated.div style={{ height, opacity }}>{items[index]}</animated.div>
+                    </animated.div>
+                ))}
             </div>
-            <div className={ styles.socialIconsContainer }>
-                <div className={ styles.circleContainer }>
-                    <FontAwesomeIcon icon={ faFacebookF } className={ styles.icon } />
-                </div>
-                <div className={ styles.circleContainer }>
-                    <FontAwesomeIcon icon={ faYoutube } className={ styles.icon } />
-                </div>
-                <div className={ styles.circleContainer }>
-                    <FontAwesomeIcon icon={ faTwitter } className={ styles.icon } />
-                </div>
-                <div className={ styles.circleContainer }>
-                    <FontAwesomeIcon icon={ faInstagram } className={ styles.icon } />
-                </div>
-                <div className={ styles.circleContainer }>
-                    <FontAwesomeIcon icon={ faVimeoV } className={ styles.icon } />
-                </div>
-            </div>
+            <div className={ styles.adjectives }>Videomaker</div>
+            <HomeButtons openWorks={ openWorks } openBlog={ openBlog } />
+            <Icons />
         </div>
     );
 }

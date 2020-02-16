@@ -2,7 +2,7 @@
 
 .backgroundImgHome {
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 48px);
   background: url('../images/img1.jpeg');
   background-position: center;
   background-repeat: no-repeat;
@@ -17,7 +17,7 @@
   font-weight: 700;
   letter-spacing: 4px;
   color: white;
-  padding-top: 35vh;
+  opacity: 0.01;
 }
 
 .adjectives {
@@ -91,16 +91,15 @@
 }
 
 .socialIconsContainer {
-  width: 30%;
-  margin-left: 35%;
   display: flex;
-  justify-content: space-between;
-  margin-top: 80px;
+  justify-content: center;
+  margin-top: 60px;
 }
 
 .circleContainer {
   width: 40px;
   height: 40px;
+  margin: 0 5px;
   border: 1px solid white;
   border-radius: 50%;
   text-align: center;
@@ -120,4 +119,22 @@
   color: white;
   font-size: 22px;
   padding-top: 9px;
+}
+
+.paddingTop {
+  padding-top: 25vh;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.trailText {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  line-height: 80px;
+  font-size: 5em;
+  font-weight: 800;
+  text-transform: uppercase;
+  will-change: transform, opacity;
+  overflow: hidden;
 }

@@ -5,16 +5,17 @@ import Tab from '@material-ui/core/Tab';
 import logo from '../images/logo-transp.png';
 import AppBar from '@material-ui/core/AppBar';
 import Paper from '@material-ui/core/Paper';
-export interface IHeaderProps {
 
+export interface IHeaderProps {
+    changePage: (newValue: string) => void;
 }
 
 export const Header = (props: IHeaderProps) => {
     const [ value, setValue ] = useState("Home");
 
-    const handleChange = (event: React.ChangeEvent<{}>, newValue: any): void => {
-        debugger;
+    const handleChange = (event: React.ChangeEvent<{}>, newValue: string): void => {
         setValue(newValue);
+        props.changePage(newValue);
     };
 
     return (
@@ -25,7 +26,9 @@ export const Header = (props: IHeaderProps) => {
                         value={value}
                         onChange={handleChange}
                         centered={true}
-                        // indicatorColor={`${orange}`}
+                        classes={{
+                            indicator: style.indicator.indicator
+                        }}
                         // inkBarStyle={{ backgroundColor: '#e65100' }}
                         // inkBarContainerStyle={{ background: '#e65100' }}
                     >
@@ -37,7 +40,14 @@ export const Header = (props: IHeaderProps) => {
                 <img src={logo} alt="Logo" className={styles.logo}></img>
             </Paper>
         </div>
-
     );
 }
 
+const style = {
+    label: {
+        color: '#F07D2C'
+    },
+    indicator: {
+        indicator: `${styles.indicatorColor}`
+    }
+};

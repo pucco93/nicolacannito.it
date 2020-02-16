@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import styles from './Header.module.scss';
+import styles from './Header.module.scss';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
