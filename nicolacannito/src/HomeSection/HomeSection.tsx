@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './HomeSection.module.scss';
 import { useTrail, animated, interpolate } from 'react-spring';
 import { Icons } from './Icons';
@@ -33,7 +33,7 @@ export const HomeSection = (props: IHomeSectionProps) => {
     }
 
     return(
-        <div className={ styles.backgroundImgHome } >
+        <div className={ styles.backgroundImgHome }>
             <div className={ styles.paddingTop } >
                 { trail.map(({ x, height, opacity }, index) => (
                     <animated.div key={items[index]}
