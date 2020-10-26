@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import styles from './HomeSection.module.scss';
+import useStyles from './HomeButtons.styles';
+import Theme from '../models/Theme';
 
 export interface IHomeButtonsProps {
   openWorks: (workValue: string) => void;
   openBlog: () => void;
+  theme: Theme;
 }
 
 export const HomeButtons = (props: IHomeButtonsProps) => {
+  let { buttons, workButton, blogButton } = useStyles(props);
 
   const openWorks = () => {
     props.openWorks('Work');
@@ -18,9 +21,9 @@ export const HomeButtons = (props: IHomeButtonsProps) => {
   }
 
   return (
-    <div className={ styles.buttons }>
-      <div className={ styles.workButton } onClick={ openWorks }>work</div>
-      <div className={ styles.blogButton } onClick={ openBlog }>blog</div>
+    <div className={ buttons }>
+      <div className={ workButton } onClick={ openWorks }>work</div>
+      <div className={ blogButton } onClick={ openBlog }>blog</div>
     </div>
   );
 }

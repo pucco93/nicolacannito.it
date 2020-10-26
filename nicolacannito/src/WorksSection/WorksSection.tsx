@@ -7,6 +7,8 @@ export interface IWorksSectionProps {
 
 export const WorksSection = (props: IWorksSectionProps) => {
   return(
-    <div></div>
+    <div>
+      {/* <Header changePage={ changePage } /> */}
+    </div>
   );
 }
