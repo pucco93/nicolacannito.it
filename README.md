@@ -25,11 +25,14 @@ The project has passed throught various stages (more of them restarting the proj
 - The 4th, and last until now, iteration was to replace all the React classes with Hooks, this was difficult since in this stage Hooks were tought only by myself, and if the project was going in a good way, Hooks would be used during everyday job switching from classes.
 Some animations have been implemented during this iteration, using **[React-spring](https://github.com/react-spring/react-spring)**, with some difficulties using typescript.
 
+### Material UI - useStyles (React-JSS)
+- This step was about transitioning from SCSS modules to React-JSS, which I've found more usefull due to the use of the props to change the CSS without flood the tsx file with conditions and others.
+
 ## Home Section 
-This part is almost completed, with the last thing being in development, a background transition that could show images in a loop.
+This page is the home and the main page that user will see accessing the site. It is almost completed, the remaining part is about the background transitions which will be about 4 images that will loop with a fade in/fade out transition between them.
 
 ## About Section
 This part is to start.
 
-# Works Section
+## Works Section
 This part is to start.
