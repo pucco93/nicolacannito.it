@@ -1,19 +1,16 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { IHomeSectionProps } from './HomeSection';
 
-
-let backgroundImg: string = require('../images/img1.jpeg');
-
 const useStyles = makeStyles({
     backgroundImgHome: {
         width: '100%',
         height: '100vh',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        position: 'relative'
+        backgroundPosition: 'center!important',
+        backgroundRepeat: 'no-repeat!important',
+        backgroundSize: 'cover!important',
+        position: 'absolute',
     },
-    mainTitleName: (props: IHomeSectionProps) => ({
+    mainTitleName: {
         textTransform: 'uppercase',
         textAlign: 'center',
         fontSize: 65,
@@ -21,19 +18,29 @@ const useStyles = makeStyles({
         letterSpacing: 4,
         color: 'white',
         opacity: 0.01,
-    }),
-    adjectives: (props: IHomeSectionProps) => ({
+    },
+    adjectives: {
         marginTop: 40,
         textTransform: 'uppercase',
         textAlign: 'center',
         fontSize: 30,
         fontWeight: 600,
         color: 'white',
-    }),
+        position: 'relative',
+    },
     paddingTop: {
         paddingTop: '25vh',
         display: 'flex',
         justifyContent: 'space-evenly'
+    },
+    blackLayer: {
+        background: '#000',
+        opacity: 0.4,
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0
     }
 });
 

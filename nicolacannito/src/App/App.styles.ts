@@ -4,7 +4,8 @@ const useStyles = makeStyles({
     container: {
         textAlign: 'left',
         fontFamily: 'Roboto',
-        userSelect: 'none'
+        userSelect: 'none',
+        position: 'relative'
     }
 });
 

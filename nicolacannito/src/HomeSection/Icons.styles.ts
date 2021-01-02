@@ -5,12 +5,13 @@ const useStyles = makeStyles({
     socialIconsContainer: {
         display: 'flex',
         justifyContent: 'center',
-        marginTop: 60
+        marginTop: 60,
+        position: 'relative',
     },
     circleContainer: (props: IIconsProps) => ({
         width: 40,
         height: 40,
-        margin: '0px 5px',
+        margin: '0px 10px',
         border: '1px solid',
         borderColor: 'white',
         borderRadius: '50%',

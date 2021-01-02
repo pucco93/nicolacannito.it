@@ -3,7 +3,7 @@ import useStyles from './HomeSection.styles';
 import { useTransition, useTrail, animated, interpolate, config } from 'react-spring';
 import { Icons } from './Icons';
 import { HomeButtons } from './HomeButtons';
-import Theme from '../models/Theme';
+import { Theme, Slide } from '../models/index';
 
 
 export interface IHomeSectionProps {
@@ -17,7 +17,7 @@ const slide1 = require('../images/29714841_210837386351112_5832599591224082432_n
 const slide2 = require('../images/31977747_184004115594040_6407179564463685632_n.jpg');
 const slide3 = require('../images/35617598_260202887890928_1558943008118800384_n.jpg');
 
-const slides = [
+const slides: Slide[] = [
     { id: 0, url: slide0 },
     { id: 1, url: slide1 },
     { id: 2, url: slide2 },
@@ -25,25 +25,20 @@ const slides = [
 ];
 
 const HomeSection = (props: IHomeSectionProps) => {
-    let { backgroundImgHome, paddingTop, mainTitleName, adjectives } = useStyles(props);
+    let { backgroundImgHome, paddingTop, mainTitleName, adjectives, blackLayer } = useStyles(props);
 
-    const items = ['Nicola Cannito'];
-    const [index, setIndex] = useState<number>(0);
-    const transitions = useTransition(slides[index], slide => slide.id, {
+    const [slidesIndex, set] = useState<number>(0);
+    const items: string[] = ['Nicola Cannito'];
+    const transitions = useTransition(items, (item: string) => item, {
+        from: {  transform: 'translate3d(0, -80px, 0)', opacity: 1 },
+        enter: { transform: 'translate3d(0, 0px, 0)', opacity: 1 },
+        leave: { transform: 'translate3d(0, -80px, 0)', opacity: 0 }, 
+    });
+    const slidesTransitions = useTransition(slides[slidesIndex], (slide: Slide) => slide.id, {
         from: { opacity: 0 },
         enter: { opacity: 1 },
         leave: { opacity: 0 },
         config: config.molasses,
-    });
-
-    const configTitles = { duration: 600, mass: 1, tension: 200, friction: 100 };
-
-    const trail = useTrail(items.length, {
-        configTitles,
-        opacity: props.titleTransition ? 1 : 0,
-        x: props.titleTransition ? 0 : 20,
-        height: props.titleTransition ? 120 : 0,
-        from: { opacity: 0, x: 20, height: 0 },
     });
     
     const openWorks = () => {
@@ -54,31 +49,26 @@ const HomeSection = (props: IHomeSectionProps) => {
         // props.changePage('Blog');
     };
 
-    useEffect(() => void setInterval(() => setIndex(state => (state + 1) % 4), 2000), []);
+    useEffect(() => {
+        setInterval(
+            () => set(state => (state + 1) % 4), 8000);
+    }, []);
 
     return(
         <>
-            { transitions.map(({ item, props, key }) => (
+            { slidesTransitions.map(({ item, props, key }) => (
                 <animated.div
                     key={ key }
                     className={ backgroundImgHome }
                     style={{ ...props, background: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("${item.url}")` }}
-                />
+                >
+                    <div className={ blackLayer }></div>
+                </animated.div>
             ))}
             <div className={ paddingTop } >
-                { trail.map(({ x, height, opacity }, index) => (
-                    <animated.div key={items[index]}
-                        className={ mainTitleName }
-                        style={{
-                            opacity: 1,
-                            transform: interpolate([],
-                                (x: number) => `translate3d(0,${x}px,0)`
-                            )
-                        }}
-                    >
-                        <animated.div style={{ height, opacity }}>{items[index]}</animated.div>
-                    </animated.div>
-                ))}
+                { transitions.map(({ item, props, key }) =>
+                    <animated.div className={ mainTitleName } key={ key } style={ props }>{ item }</animated.div>
+                )}
             </div>
             <div className={ adjectives }>Videomaker</div>
             <HomeButtons
