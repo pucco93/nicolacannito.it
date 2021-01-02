@@ -7,6 +7,8 @@ import { WorksSection } from '../WorksSection/WorksSection';
 import darkTheme from '../theming/DarkTheme';
 import defaultTheme from '../theming/DefaultTheme';
 import Theme from '../models/Theme';
+import * as manager from '../managers/APIManager';
+import { Post } from '../models/index';
 
 
 export interface IAppProps {
@@ -29,10 +31,16 @@ export const App = (props: IAppProps) => {
     setPage(newValue);
   };
 
+  const _getPosts = async () => {
+    let posts: Post[] = [];
+    posts = await manager.getPosts();
+    return posts;
+  }
+
   let pages: JSX.Element = <HomeSection titleTransition={ titleTransition } changePage={ changePage } theme={ _theme } />;
 
   if(page === 'About') {
-    pages = <AboutSection />;
+    pages = <AboutSection getPosts={ _getPosts } />;
   } else if(page === 'Work') {
     pages = <WorksSection />;
   }

@@ -42,7 +42,7 @@ const HomeSection = (props: IHomeSectionProps) => {
     });
     
     const openWorks = () => {
-        props.changePage('Works');
+        window.open("https://www.youtube.com/playlist?list=PLc0sxwRljI31iFHfKbBW-4q0qD1QAmR_K");
     };
 
     const openBlog = () => {

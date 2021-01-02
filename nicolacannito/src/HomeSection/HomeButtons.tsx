@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import useStyles from './HomeButtons.styles';
 import Theme from '../models/Theme';
 

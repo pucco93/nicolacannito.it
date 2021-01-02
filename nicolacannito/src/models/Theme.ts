@@ -1,4 +1,4 @@
-type Theme = {
+type ThemeModel = {
     primaryColor: string;
     secondaryColor: string;
     tertiaryColor: string;
@@ -11,4 +11,4 @@ type Theme = {
     sectionColor: string;
 };
 
-export default Theme;
+export default ThemeModel;
