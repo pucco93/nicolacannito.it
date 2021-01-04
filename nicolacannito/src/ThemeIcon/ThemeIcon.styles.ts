@@ -1,13 +1,8 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { IAboutSectionProps } from './AboutSection';
+import { IThemeIconProps } from './ThemeIcon';
 
 const useStyles = makeStyles({
-    page: {
 
-    },
-    logo: {
-
-    },
 });
 
 export default useStyles;

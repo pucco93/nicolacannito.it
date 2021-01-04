@@ -1,8 +1,6 @@
-import { TIMEOUT } from 'dns';
 import { Post } from '../models/index';
 
 const _mapPosts = (promiseResult: any) => {
-    debugger;
     let postsMapped: Post[] = [];
     promiseResult.forEach((element: any) => {
         postsMapped.push({

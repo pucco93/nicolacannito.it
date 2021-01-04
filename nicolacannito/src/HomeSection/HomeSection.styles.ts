@@ -10,38 +10,38 @@ const useStyles = makeStyles({
         backgroundSize: 'cover!important',
         position: 'absolute',
     },
-    mainTitleName: {
+    mainTitleName: (props: IHomeSectionProps) => ({
         textTransform: 'uppercase',
         textAlign: 'center',
         fontSize: 65,
         fontWeight: 700,
         letterSpacing: 4,
-        color: 'white',
+        color: props.theme.backgroundVariant,
         opacity: 0.01,
-    },
-    adjectives: {
+    }),
+    adjectives: (props: IHomeSectionProps) => ({
         marginTop: 40,
         textTransform: 'uppercase',
         textAlign: 'center',
         fontSize: 30,
         fontWeight: 600,
-        color: 'white',
+        color: props.theme.backgroundVariant,
         position: 'relative',
-    },
+    }),
     paddingTop: {
         paddingTop: '25vh',
         display: 'flex',
         justifyContent: 'space-evenly'
     },
-    blackLayer: {
-        background: '#000',
+    blackLayer: (props: IHomeSectionProps) => ({
+        background: props.theme.titleColor,
         opacity: 0.4,
         position: 'absolute',
         top: 0,
         bottom: 0,
         left: 0,
         right: 0
-    }
+    })
 });
 
 export default useStyles;

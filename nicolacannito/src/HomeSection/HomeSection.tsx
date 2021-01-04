@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import useStyles from './HomeSection.styles';
-import { useTransition, useTrail, animated, interpolate, config } from 'react-spring';
+import { useTransition, animated, config } from 'react-spring';
 import { Icons } from './Icons';
 import { HomeButtons } from './HomeButtons';
 import { Theme, Slide } from '../models/index';
@@ -8,7 +8,6 @@ import { Theme, Slide } from '../models/index';
 
 export interface IHomeSectionProps {
     titleTransition: boolean;
-    changePage: (workValue: string) => void;
     theme: Theme;
 }
 
@@ -40,14 +39,6 @@ const HomeSection = (props: IHomeSectionProps) => {
         leave: { opacity: 0 },
         config: config.molasses,
     });
-    
-    const openWorks = () => {
-        window.open("https://www.youtube.com/playlist?list=PLc0sxwRljI31iFHfKbBW-4q0qD1QAmR_K");
-    };
-
-    const openBlog = () => {
-        // props.changePage('Blog');
-    };
 
     useEffect(() => {
         setInterval(
@@ -72,8 +63,6 @@ const HomeSection = (props: IHomeSectionProps) => {
             </div>
             <div className={ adjectives }>Videomaker</div>
             <HomeButtons
-                openWorks={ openWorks }
-                openBlog={ openBlog }
                 theme={ props.theme }
             />
             <Icons 

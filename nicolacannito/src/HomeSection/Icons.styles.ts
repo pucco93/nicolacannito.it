@@ -13,14 +13,14 @@ const useStyles = makeStyles({
         height: 40,
         margin: '0px 10px',
         border: '1px solid',
-        borderColor: 'white',
+        borderColor: props.theme.backgroundVariant,
         borderRadius: '50%',
         textAlign: 'center',
         cursor: 'pointer',
-        color: 'white',
+        color: props.theme.backgroundVariant,
         transition: 'all 300ms',
         '&:hover': {
-            background: 'white',
+            background: props.theme.backgroundVariant,
             color: props.theme.tertiaryColor
         },
     }),
