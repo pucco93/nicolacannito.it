@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import useStyles from './ShimmerPost.styles';
-import { Theme } from '../../models/index';
+import { Theme } from '../../../models/index';
 import Skeleton from '@material-ui/lab/Skeleton';
 
 export interface IShimmerPostProps {

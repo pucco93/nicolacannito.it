@@ -22,8 +22,8 @@ export const HomeButtons = (props: IHomeButtonsProps) => {
   return (
     <div className={ buttons }>
       <div className={ workButton } onClick={ openWorks }>works</div>
-      <NavLink className={ blogButton } to="/Blog" >blog</NavLink>
-      <NavLink className={ aboutButton } to="/About" >about</NavLink>
+      <NavLink className={ blogButton } to="/blog" >blog</NavLink>
+      <NavLink className={ aboutButton } to="/about" >about</NavLink>
     </div>
   );
 }

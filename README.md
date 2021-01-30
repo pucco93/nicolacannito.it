@@ -27,7 +27,7 @@ Some animations have been implemented during this iteration, using **[React-spri
 UPDATE: after some time not updating this project but using hooks during everyday work I've felt more secure using them, so I've found a way to let react spring work correctly, implementing some transitions using useTransition.
 
 ### Material UI - useStyles (React-JSS)
-- This step was about transitioning from SCSS modules to React-JSS, which I've found more usefull due to the use of the props to change the CSS without flood the tsx file with conditions and others.
+- This step was about transitioning from SCSS modules to React-JSS, which I've found more usefull due to the use of the props to change the CSS without flooding the tsx file with conditions and others related to CSS.
 
 ### React-Router
 - Since the start of the project I was thinking of giving **[React-Router](https://reactrouter.com/web)** a try, so in this iteration I've tried implementing this package.

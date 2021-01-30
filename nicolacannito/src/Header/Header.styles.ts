@@ -9,6 +9,8 @@ const headerStyles = makeStyles({
         flexWrap: 'wrap',
         justifyContent: 'space-between',
         background: props.theme.titleColor,
+        position: 'fixed',
+        zIndex: 3
     }),
     pages: {
         display: 'flex',

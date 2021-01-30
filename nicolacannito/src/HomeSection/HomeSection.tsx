@@ -4,11 +4,13 @@ import { useTransition, animated, config } from 'react-spring';
 import { Icons } from './Icons';
 import { HomeButtons } from './HomeButtons';
 import { Theme, Slide } from '../models/index';
+// import TypedFunction from '../TypedFunction';
 
 
 export interface IHomeSectionProps {
     titleTransition: boolean;
     theme: Theme;
+    // t: TypedFunction<string>;
 }
 
 const slide0 = require('../images/26182021_328792247622150_7694016409898057728_n.jpg');
@@ -24,7 +26,13 @@ const slides: Slide[] = [
 ];
 
 const HomeSection = (props: IHomeSectionProps) => {
-    let { backgroundImgHome, paddingTop, mainTitleName, adjectives, blackLayer } = useStyles(props);
+    let { 
+        backgroundImgHome, 
+        paddingTop, 
+        mainTitleName, 
+        adjectives, 
+        blackLayer 
+    } = useStyles(props);
 
     const [slidesIndex, set] = useState<number>(0);
     const items: string[] = ['Nicola Cannito'];

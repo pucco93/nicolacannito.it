@@ -36,6 +36,7 @@ const Header = (props: IHeaderProps) => {
         themeIcon
     } = headerStyles(props);
 
+
     const _workClick = () => {
         window.open("https://www.youtube.com/playlist?list=PLc0sxwRljI31iFHfKbBW-4q0qD1QAmR_K");
     };
@@ -68,9 +69,9 @@ const Header = (props: IHeaderProps) => {
         <div className={ headerBar }>
             <div className={ pages }>
                 <NavLink to="/" className={ homeLink } >Home</NavLink>
-                <NavLink to="/Blog" className={ blogLink } >Blog</NavLink>
+                <NavLink to="/blog" className={ blogLink } >Blog</NavLink>
                 <div className={ worksLink } onClick={ _workClick }>Works</div>
-                <NavLink to="/About" className={ aboutLink } >About</NavLink>
+                <NavLink to="/about" className={ aboutLink } >About</NavLink>
             </div>
             <div className={ icons }>
                 <div className={ facebook } onClick={ openFacebook } >
