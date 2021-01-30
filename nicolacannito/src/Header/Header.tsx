@@ -1,53 +1,106 @@
 import React, { useState } from 'react';
-import styles from './Header.module.scss';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import logo from '../images/logo-transp.png';
-import AppBar from '@material-ui/core/AppBar';
-import Paper from '@material-ui/core/Paper';
+import headerStyles from './Header.styles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebookF,
+    faYoutube,
+    faTwitter,
+    faInstagram,
+    faVimeoV
+} from '@fortawesome/free-brands-svg-icons';
+import Tooltip from '@material-ui/core/Tooltip';
+import { NavLink } from 'react-router-dom';
+import { Theme } from '../models/index';
+import ThemeIcon from '../ThemeIcon/ThemeIcon';
 
 export interface IHeaderProps {
-    changePage: (newValue: string) => void;
+    changeTheme: () => void;
+    theme: Theme;
+    isDarkTheme: boolean;
 }
 
-export const Header = (props: IHeaderProps) => {
-    const [ value, setValue ] = useState("Home");
+const Header = (props: IHeaderProps) => {
+    const { 
+        headerBar,
+        pages,
+        homeLink,
+        aboutLink,
+        blogLink,
+        worksLink,
+        icons, 
+        facebook, 
+        youtube, 
+        twitter, 
+        instagram, 
+        vimeo,
+        icon,
+        themeIcon
+    } = headerStyles(props);
 
-    const handleChange = (event: React.ChangeEvent<{}>, newValue: string): void => {
-        setValue(newValue);
-        props.changePage(newValue);
+
+    const _workClick = () => {
+        window.open("https://www.youtube.com/playlist?list=PLc0sxwRljI31iFHfKbBW-4q0qD1QAmR_K");
+    };
+
+    const _changeTheme = () => {
+        props.changeTheme();
+    };
+
+    const openFacebook = () => {
+        window.open("https://www.facebook.com/nicolacannitofilm", "_blank");
+    };
+    
+    const openYoutube = () => {
+        window.open("https://www.youtube.com/nicolacannito", "_blank");
+    };
+
+    const openTwitter = () => {
+        window.open("https://twitter.com/nicolacannito", "_blank");
+    };
+
+    const openInstagram = () => {
+        window.open("https://www.instagram.com/nicola.cannito/", "_blank");
+    };
+
+    const openVimeo = () => {
+        window.open("https://vimeo.com/nicolacannito", "_blank");
     };
 
     return (
-        <div className={ styles.mainNav }>
-            <Paper>
-                <AppBar position="static">
-                    <Tabs
-                        value={value}
-                        onChange={handleChange}
-                        centered={true}
-                        classes={{
-                            indicator: style.indicator.indicator
-                        }}
-                        // inkBarStyle={{ backgroundColor: '#e65100' }}
-                        // inkBarContainerStyle={{ background: '#e65100' }}
-                    >
-                        <Tab label="Home" value={"Home"} />
-                        <Tab label="About" value={"About"} />
-                        <Tab label="Work" value={"Work"} />
-                    </Tabs>
-                </AppBar>
-                <img src={logo} alt="Logo" className={styles.logo}></img>
-            </Paper>
+        <div className={ headerBar }>
+            <div className={ pages }>
+                <NavLink to="/" className={ homeLink } >Home</NavLink>
+                <NavLink to="/blog" className={ blogLink } >Blog</NavLink>
+                <div className={ worksLink } onClick={ _workClick }>Works</div>
+                <NavLink to="/about" className={ aboutLink } >About</NavLink>
+            </div>
+            <div className={ icons }>
+                <div className={ facebook } onClick={ openFacebook } >
+                    <FontAwesomeIcon icon={ faFacebookF } className={ icon } />
+                </div>
+                <div className={ youtube } onClick={ openYoutube }>
+                    <FontAwesomeIcon icon={ faYoutube } className={ icon } />
+                </div>
+                <div className={ twitter } onClick={ openTwitter } >
+                    <FontAwesomeIcon icon={ faTwitter } className={ icon } />
+                </div>
+                <div className={ instagram } onClick={ openInstagram } >
+                    <FontAwesomeIcon icon={ faInstagram } className={ icon } />
+                </div>
+                <div className={ vimeo } onClick={ openVimeo } >
+                    <FontAwesomeIcon icon={ faVimeoV } className={ icon } />
+                </div>
+            </div>
+            <Tooltip title="Toggle dark mode" aria-label="Toggle dark mode">
+                <div className={ themeIcon }>
+                        <ThemeIcon 
+                            theme={ props.theme }
+                            changeTheme={ _changeTheme }
+                            internalState={ props.isDarkTheme }
+                        />
+                </div>
+            </Tooltip>
         </div>
     );
-}
-
-const style = {
-    label: {
-        color: '#F07D2C'
-    },
-    indicator: {
-        indicator: `${styles.indicatorColor}`
-    }
 };
+
+export default Header;

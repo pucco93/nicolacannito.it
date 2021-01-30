@@ -1,26 +1,29 @@
-import React, { useState } from 'react';
-import styles from './HomeSection.module.scss';
+import React from 'react';
+import useStyles from './HomeButtons.styles';
+import { Theme } from '../models/index';
+import { NavLink } from 'react-router-dom';
 
 export interface IHomeButtonsProps {
-  openWorks: (workValue: string) => void;
-  openBlog: () => void;
+  theme: Theme;
 }
 
 export const HomeButtons = (props: IHomeButtonsProps) => {
-
+  let { 
+    buttons, 
+    workButton, 
+    blogButton,
+    aboutButton 
+  } = useStyles(props);
+    
   const openWorks = () => {
-    props.openWorks('Work');
-  }
-
-  const openBlog = () => {
-    // Here will open the Wordpress part
-    window.open('#');
-  }
+    window.open("https://www.youtube.com/playlist?list=PLc0sxwRljI31iFHfKbBW-4q0qD1QAmR_K");
+  };
 
   return (
-    <div className={ styles.buttons }>
-      <div className={ styles.workButton } onClick={ openWorks }>work</div>
-      <div className={ styles.blogButton } onClick={ openBlog }>blog</div>
+    <div className={ buttons }>
+      <div className={ workButton } onClick={ openWorks }>works</div>
+      <NavLink className={ blogButton } to="/blog" >blog</NavLink>
+      <NavLink className={ aboutButton } to="/about" >about</NavLink>
     </div>
   );
 }
