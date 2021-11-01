@@ -56,7 +56,7 @@ const Input = (props: IInputProps) => {
             case 'title': 
                 return "Titolo del messaggio";
             case 'description': 
-                return "";
+                return "Write some infos, maximum 5000 characters.";
         }
     };
 

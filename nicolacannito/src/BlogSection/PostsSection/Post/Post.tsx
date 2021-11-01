@@ -28,30 +28,26 @@ const Post = (props: IPostProps) => {
         round
     } = useStyles(props);
 
-    const _truncateString = (text: string, isTitle: boolean) => {
-        let newString: string = '';
-        if(isTitle) {
-            newString = text.length >= 40 ? `${text.substr(0, 37)}...` : text;
-        } else {
-            newString = text.length >= 90 ? `${text.substr(0, 90)}...` : text;
-        }
-        return newString;
-    };
+    // const _truncateString = (text: string, isTitle: boolean) => {
+    //     let newString: string = '';
+    //     if(isTitle) {
+    //         newString = text.length >= 40 ? `${text.substr(0, 37)}...` : text;
+    //     } else {
+    //         newString = text.length >= 90 ? `${text.substr(0, 90)}...` : text;
+    //     }
+    //     return newString;
+    // };
 
     let newDate: string = '';
-    let newDescription: string = '';
-    let newTitle: string = '';
     if(props.post) {
         if(props.post.date) {
             newDate = new Date(props.post.date).toLocaleDateString('it-IT', { day: '2-digit', month: 'long', year: 'numeric' });
         }
-        if(props.post.text) {
-            newDescription = _truncateString(props.post.text, false);
-        }
-        if(props.post.title) {
-            newTitle = _truncateString(props.post.title, true);
-        }
     }
+
+    const createMarkup = () => {
+        return { __html: props.post ? props.post.text : "" };
+    };
 
     const _shareOnFacebook = () => {
         props.shareOnFacebook(props.post);
@@ -92,14 +88,12 @@ const Post = (props: IPostProps) => {
                 </div>
                 <div className={ infos }>
                     <div className={ title }>
-                        { newTitle }
+                        { props.post ? props.post.title : '' }
                     </div>
                     <div className={ date }>
                         { newDate }
                     </div>
-                    <div className={ description }>
-                        { newDescription }
-                    </div>
+                    <div className={ description } dangerouslySetInnerHTML={ createMarkup() } ></div>
                 </div>
             </NavLink>
         </>
