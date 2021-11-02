@@ -7,7 +7,7 @@ const useStyles = makeStyles({
         display: 'flex',
         flexWrap: 'wrap',
     }),
-    sendButton:{
+    sendButton: (props: ISendButtonProps) => ({
         width: '100%',
         padding: '10px 25px',
         margin: '20px 0',
@@ -17,8 +17,10 @@ const useStyles = makeStyles({
         transition: 'all 300ms',
         justifyContent: 'center',
         '&:hover': {
-        }
-    },
+            background: props.theme.backgroundColor,
+            color: props.theme.backgroundVariant
+        },
+    }),
     text: (props: ISendButtonProps) => ({
         fontSize: 24,
         cursor: 'pointer',
