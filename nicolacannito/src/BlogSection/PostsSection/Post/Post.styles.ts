@@ -34,7 +34,7 @@ const useStyles = makeStyles({
         borderRadius: '0px 0px 20px 20px',
         position: 'absolute',
         bottom: 0,
-        minHeight: '35%',
+        height: '35%',
         transition: 'all 300ms',
     }),
     title: (props: IPostProps) => ({
@@ -52,6 +52,8 @@ const useStyles = makeStyles({
         fontSize: 14,
         color: props.theme.backgroundVariant,
         padding: '0px 10px 10px 10px',
+        maxHeight: '56%',
+        overflow: 'hidden',
     }),
     shareButtons: (props: IPostProps) => ({
         position: 'absolute',
@@ -85,7 +87,8 @@ const useStyles = makeStyles({
         paddingTop: 10,
         display: 'flex',
         flexWrap: 'wrap',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        transition: 'all 300ms'
     })
 });
 

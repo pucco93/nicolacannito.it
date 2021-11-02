@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import headerStyles from './Header.styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF,
